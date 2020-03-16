@@ -12,3 +12,6 @@ spring:
       discovery:
         locator:
           enabled: true
+    loadbalancer:
+      retry:
+        enabled: true
