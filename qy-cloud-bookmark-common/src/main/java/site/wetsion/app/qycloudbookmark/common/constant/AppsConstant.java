@@ -15,4 +15,7 @@ public class AppsConstant {
 
     /** 用户服务 */
     public static final String APP_USER_SERVICE = "qy-cloud-bookmark-service-user";
+
+    /** bookmark服务 */
+    public static final String APP_BOOKMARK_SERVICE = "qy-cloud-bookmark-service-bookmark";
 }
