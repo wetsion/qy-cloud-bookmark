@@ -1,5 +1,6 @@
 package site.wetsion.app.qycloudbookmark.api.bookmark.vo;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  * Created by wetsion on 2020/3/17.
  */
 @Data
+@Builder
 public class CategoryVo {
 
     private Long id;

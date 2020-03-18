@@ -1,5 +1,6 @@
 package site.wetsion.app.qycloudbookmark.api.bookmark.vo;
 
+import lombok.Builder;
 import lombok.Data;
 import site.wetsion.app.qycloudbookmark.api.bookmark.entity.Bookmark;
 import site.wetsion.app.qycloudbookmark.api.bookmark.entity.Category;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
  * Created by wetsion on 2020/3/17.
  */
 @Data
+@Builder
 public class BookmarkVo {
 
     private Long id;

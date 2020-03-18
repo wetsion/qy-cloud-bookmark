@@ -12,6 +12,15 @@ spring:
       discovery:
         locator:
           enabled: true
+      ## 路由
+      routes:
+        - id: system_route
+          uri: lb://qy-cloud-bookmark-service-system
+          predicates:
+            - Path=/api/announcement/**
+
+
+
     loadbalancer:
       retry:
         enabled: true

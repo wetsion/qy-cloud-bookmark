@@ -15,6 +15,10 @@
         <module>qy-cloud-bookmark-gateway</module>
         <module>qy-cloud-bookmark-common</module>
         <module>qy-cloud-bookmark-service-user</module>
+        <module>qy-cloud-bookmark-api-commercial</module>
+        <module>qy-cloud-bookmark-api-system</module>
+        <module>qy-cloud-bookmark-api-admin</module>
+        <module>qy-cloud-bookmark-service-system</module>
     </modules>
 
     <properties>

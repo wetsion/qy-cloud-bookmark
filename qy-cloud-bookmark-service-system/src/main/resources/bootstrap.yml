@@ -1,0 +1,13 @@
+server:
+  port: 9030
+spring:
+  application:
+    name: qy-cloud-bookmark-service-system
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: properties
+      discovery:
+        server-addr: localhost:8848
+
