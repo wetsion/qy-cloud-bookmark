@@ -1,19 +1,21 @@
 package site.wetsion.app.qycloudbookmark.service.system.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import site.wetsion.app.qycloudbookmark.api.system.entity.Announcement;
 import site.wetsion.app.qycloudbookmark.api.system.vo.AnnouncementVo;
 import site.wetsion.app.qycloudbookmark.common.constant.AppsConstant;
+import site.wetsion.app.qycloudbookmark.common.util.R;
 import site.wetsion.app.qycloudbookmark.service.system.service.IAnnouncementService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * 公告controller
+ *
  * Created by wetsion on 2020/3/18.
  */
 @RestController
@@ -21,13 +23,13 @@ import java.util.stream.Collectors;
 @RequestMapping(AppsConstant.APP_COMMON_API_PREFIX + "/announcement")
 public class AnnouncementController {
 
-    IAnnouncementService announcementService;
+    private IAnnouncementService announcementService;
 
     @GetMapping("/list")
-    public List<AnnouncementVo> getAnnouncementList() {
+    public R getAnnouncementList() {
         // TODO 需要修改
         List<Announcement> announcements = announcementService.list();
-        return announcements.stream().map(announcement -> AnnouncementVo.transfer(announcement, null))
-                .collect(Collectors.toList());
+        return R.ok(announcements.stream().map(announcement -> AnnouncementVo.transfer(announcement, null))
+                .collect(Collectors.toList()));
     }
 }
