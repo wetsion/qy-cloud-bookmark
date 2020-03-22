@@ -42,6 +42,8 @@ qy云书签当前主要应用于浏览器，用户安装浏览器扩展插件，
 网关 | Springcloud Gateway
 链路追踪/监控 | SkyWalking
 日志存储 | Elasticsearch
+日志传输 | Logstash
+日志展示 | Kibana
 接口文档 | Swagger
 文件系统/CDN | （待定，拟采用云）
 推荐系统 | （待定，初步mahout）
@@ -88,6 +90,33 @@ qy云书签当前主要应用于浏览器，用户安装浏览器扩展插件，
 -Dskywalking.collector.backend_service=localhost:11800
 ```
 > -javaagent:后跟的是skywalking根目录下提供的agent包，`-Dskywalking_config`指向第一步agent.config的路径（或者通过`-Dskywalking.agent.service_name`配置服务名），`-Dskywalking.collector.backend_service=localhost:11800`配置skywalking后台收集信息的服务地址，默认11800端口
+
+
+### 5. 下载并启动Logstash
+
+5.1 下载logstash-6.6.2，并解压；  
+5.2 进入logstash根目录，执行`./bin/logstash-plugin install logstash-codec-json_lines`安装插件；  
+5.3 在config目录下创建一个配置文件`logstash-springboot.conf`:  
+```sh
+input {
+  tcp {
+    mode => "server"
+    host => "0.0.0.0"
+    port => 4560
+    codec => json_lines
+  }
+}
+output {
+  elasticsearch {
+    hosts => "localhost:9200"
+    index => "springboot-%{+YYYY.MM.dd}"
+  }
+}
+```
+
+5.4 启动logstash，`./bin/lostash -f ./conf/logstash-springboot.conf`；  
+5.5 项目中添加logback-spring.xml文件；
+
 
 
 ## 项目模块划分
