@@ -23,11 +23,11 @@ CREATE TABLE `user_account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account` varchar(64) NOT NULL COMMENT '账号',
   `password` varchar(64) NOT NULL COMMENT '密码',
-  `phone` varchar(64) DEFAULT NULL COMMENT '手机号',
+  `phone` varchar(64) NOT NULL DEFAULT '' COMMENT '手机号',
   `email` varchar(64) NOT NULL COMMENT '邮箱',
-  `avatar` varchar(255) DEFAULT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `modify_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `avatar` varchar(255) NOT NULL DEFAULT '',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modify` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -85,5 +85,22 @@ DROP TABLE IF EXISTS `verbosity`;
 CREATE TABLE `verbosity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `app_role`;
+CREATE TABLE `app_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(64) NOT NULL COMMENT '角色名',
+  `role_code` varchar(32) NOT NULL COMMENT '角色标识',
+  `role_desc` varchar(64) NOT NULL DEFAULT '' COMMENT '角色描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `app_user_role`;
+CREATE TABLE `app_user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
