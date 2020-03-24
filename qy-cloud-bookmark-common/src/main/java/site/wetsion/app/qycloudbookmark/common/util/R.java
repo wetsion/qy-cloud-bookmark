@@ -1,6 +1,7 @@
 package site.wetsion.app.qycloudbookmark.common.util;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import site.wetsion.app.qycloudbookmark.common.constant.ResponseConstant;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * Created by wetsion on 2020/3/19.
  */
 @Data
+@NoArgsConstructor
 public class R<T> implements Serializable{
 
     private int code;

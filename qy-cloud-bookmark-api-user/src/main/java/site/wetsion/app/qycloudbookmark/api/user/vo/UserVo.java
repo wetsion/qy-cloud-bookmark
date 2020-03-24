@@ -1,6 +1,7 @@
 package site.wetsion.app.qycloudbookmark.api.user.vo;
 
 import lombok.Data;
+import site.wetsion.app.qycloudbookmark.common.dto.BaseDto;
 
 /**
  * 视图展示用的用户类
@@ -8,7 +9,7 @@ import lombok.Data;
  * Created by wetsion on 2020/3/17.
  */
 @Data
-public class UserVo {
+public class UserVo extends BaseDto {
 
     private Long id;
 

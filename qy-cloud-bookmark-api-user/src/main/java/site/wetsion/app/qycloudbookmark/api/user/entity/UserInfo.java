@@ -1,6 +1,7 @@
 package site.wetsion.app.qycloudbookmark.api.user.entity;
 
 import lombok.Data;
+import site.wetsion.app.qycloudbookmark.common.dto.BaseDto;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by wetsion on 2020/3/16.
  */
 @Data
-public class UserInfo {
+public class UserInfo extends BaseDto {
 
     private UserAccount userAccount;
 

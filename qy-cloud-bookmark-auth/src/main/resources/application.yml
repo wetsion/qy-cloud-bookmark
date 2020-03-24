@@ -10,4 +10,10 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: properties
-
+management:
+  endpoint:
+    health:
+      enabled: true
+logging:
+  level:
+    org: debug

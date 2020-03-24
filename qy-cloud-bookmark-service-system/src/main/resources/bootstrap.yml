@@ -10,4 +10,16 @@ spring:
         file-extension: properties
       discovery:
         server-addr: localhost:8848
-
+security:
+  oauth2:
+    client:
+      client-id: service-system
+      client-secret: 123456
+      user-authorization-uri: http://localhost:9090/oauth/authorize
+      access-token-uri: http://localhost:9090/oauth/token
+      scope: all
+    resource:
+      id: service-system
+      user-info-uri: http://localhost:9090/user/info
+    authorization:
+      check-token-access: http://localhost:9090/oauth/check_token
