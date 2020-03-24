@@ -37,4 +37,9 @@ public class AnnouncementController {
         return R.ok(announcements.stream().map(announcement -> AnnouncementVo.transfer(announcement, null))
                 .collect(Collectors.toList()));
     }
+
+    @GetMapping("/info")
+    public R info() {
+        return R.ok();
+    }
 }

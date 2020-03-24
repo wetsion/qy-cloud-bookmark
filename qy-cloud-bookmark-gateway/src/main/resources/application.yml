@@ -18,6 +18,10 @@ spring:
           uri: lb://qy-cloud-bookmark-service-system
           predicates:
             - Path=/api/announcement/**
+        - id: user_route
+          uri: lb://qy-cloud-bookmark-service-user
+          predicates:
+            - Path=/api/user/**
 
 
 

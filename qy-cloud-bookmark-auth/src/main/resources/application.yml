@@ -16,4 +16,4 @@ management:
       enabled: true
 logging:
   level:
-    org: debug
+    org.springframework: debug

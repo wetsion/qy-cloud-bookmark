@@ -15,8 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-@EnableWebSecurity
-@EnableOAuth2Sso
+//@EnableWebSecurity
+//@EnableOAuth2Sso
 public class SystemServiceApplication {
 
     public static void main(String[] args) {

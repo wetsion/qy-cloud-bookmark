@@ -1,5 +1,9 @@
 server:
   port: 9030
+  servlet:
+    session:
+      cookie:
+        name: QYSESSIONSYSTEM
 spring:
   application:
     name: qy-cloud-bookmark-service-system
@@ -23,3 +27,7 @@ security:
       user-info-uri: http://localhost:9090/user/info
     authorization:
       check-token-access: http://localhost:9090/oauth/check_token
+logging:
+  level:
+    org.springframework: debug
+
