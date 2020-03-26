@@ -18,6 +18,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import site.wetsion.app.qycloudbookmark.auth.service.AppClientDetailsService;
 import site.wetsion.app.qycloudbookmark.common.constant.AuthConstant;
+import site.wetsion.app.qycloudbookmark.common.security.bean.AppServiceAccessDeniedHandler;
 import site.wetsion.app.qycloudbookmark.common.security.service.AuthUser;
 
 import javax.sql.DataSource;
@@ -59,6 +60,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .checkTokenAccess("isAuthenticated()")
                 // 配置/token_key 接口的访问权限
 //                .tokenKeyAccess("permitAll()")
+                .accessDeniedHandler(new AppServiceAccessDeniedHandler())
         ;
     }
 

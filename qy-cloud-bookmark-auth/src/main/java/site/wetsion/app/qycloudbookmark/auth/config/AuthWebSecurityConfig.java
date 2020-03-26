@@ -6,6 +6,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import site.wetsion.app.qycloudbookmark.common.security.bean.AuthAuthenticationFailureHandler;
 
 /**
  * web security
@@ -32,5 +34,10 @@ public class AuthWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler authAuthenticationFailureHandler() {
+        return new AuthAuthenticationFailureHandler();
     }
 }

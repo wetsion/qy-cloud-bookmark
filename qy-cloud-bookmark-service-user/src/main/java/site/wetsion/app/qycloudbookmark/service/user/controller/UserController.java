@@ -2,7 +2,6 @@ package site.wetsion.app.qycloudbookmark.service.user.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import site.wetsion.app.qycloudbookmark.api.user.entity.UserAccount;
 import site.wetsion.app.qycloudbookmark.api.user.entity.UserInfo;
 import site.wetsion.app.qycloudbookmark.common.constant.AppsConstant;
+import site.wetsion.app.qycloudbookmark.common.security.annotation.InnerInvokeApi;
 import site.wetsion.app.qycloudbookmark.common.util.R;
 import site.wetsion.app.qycloudbookmark.service.user.service.IUserAccountService;
 
@@ -33,6 +33,7 @@ public class UserController {
      * @param account 账号
      * @return
      */
+    @InnerInvokeApi
     @GetMapping("/info/{account}")
     public R getUserInfoByUsername(@PathVariable("account") String account) {
         UserAccount userAccount = userAccountService.getOne(
