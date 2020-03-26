@@ -12,14 +12,11 @@ import site.wetsion.app.qycloudbookmark.api.user.entity.UserAccount;
 import site.wetsion.app.qycloudbookmark.api.user.entity.UserInfo;
 import site.wetsion.app.qycloudbookmark.api.user.feign.IUserServiceClient;
 import site.wetsion.app.qycloudbookmark.common.constant.AuthConstant;
+import site.wetsion.app.qycloudbookmark.common.security.service.AuthUser;
 import site.wetsion.app.qycloudbookmark.common.util.R;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 /**
  * security 获取用户信息
@@ -40,8 +37,7 @@ public class AppUserDetailsService implements UserDetailsService {
         UserAccount userAccount = userInfoR.getData().getUserAccount();
         Collection<? extends GrantedAuthority> authorities =
                 AuthorityUtils.createAuthorityList(
-                        appRoles.stream().map(AppRole::getRoleCode)
-                        .collect(Collectors.toList()).toArray(new String[0]));
+                        appRoles.stream().map(AppRole::getRoleCode).toArray(String[]::new));
         return new AuthUser(userAccount.getId(), username, userAccount.getPassword(), authorities);
     }
 }

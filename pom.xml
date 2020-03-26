@@ -14,6 +14,7 @@
         <module>qy-cloud-bookmark-auth</module>
         <module>qy-cloud-bookmark-gateway</module>
         <module>qy-cloud-bookmark-common</module>
+        <module>qy-cloud-bookmark-common-security</module>
         <module>qy-cloud-bookmark-service-user</module>
         <module>qy-cloud-bookmark-api-commercial</module>
         <module>qy-cloud-bookmark-api-system</module>

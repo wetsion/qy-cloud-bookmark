@@ -24,7 +24,9 @@ security:
       scope: all
     resource:
       id: service-system
-      user-info-uri: http://localhost:9090/user/info
+      # 由于使用了remoteTokenServce，所以token-info-uri必须配置，配置服务名即可负载均衡
+      token-info-uri: http://qy-cloud-bookmark-auth/oauth/check_token
+#      user-info-uri: http://localhost:9090/user/info
     authorization:
       check-token-access: http://localhost:9090/oauth/check_token
 logging:

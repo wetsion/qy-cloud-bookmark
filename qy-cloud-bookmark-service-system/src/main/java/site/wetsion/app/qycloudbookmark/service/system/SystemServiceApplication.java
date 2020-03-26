@@ -2,10 +2,9 @@ package site.wetsion.app.qycloudbookmark.service.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import site.wetsion.app.qycloudbookmark.common.security.annotation.EnableQyAppResourceServer;
 
 /**
  * 系统服务
@@ -15,8 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-//@EnableWebSecurity
-//@EnableOAuth2Sso
+@EnableQyAppResourceServer
 public class SystemServiceApplication {
 
     public static void main(String[] args) {

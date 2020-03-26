@@ -5,6 +5,10 @@ package site.wetsion.app.qycloudbookmark.common.constant;
  */
 public interface AuthConstant {
 
+    String LABEL_LICENSE = "license";
+
+    String LABEL_USERID = "user_id";
+
     String LICENSE = "Made by wetsion, Copyright © wetsion";
 
     String FROM = "from";

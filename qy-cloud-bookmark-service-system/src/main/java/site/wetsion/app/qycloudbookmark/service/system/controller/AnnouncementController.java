@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import site.wetsion.app.qycloudbookmark.api.system.entity.Announcement;
 import site.wetsion.app.qycloudbookmark.api.system.vo.AnnouncementVo;
 import site.wetsion.app.qycloudbookmark.common.constant.AppsConstant;
+import site.wetsion.app.qycloudbookmark.common.security.util.SecurityUtil;
 import site.wetsion.app.qycloudbookmark.common.util.R;
 import site.wetsion.app.qycloudbookmark.service.system.service.IAnnouncementService;
 
@@ -32,6 +33,7 @@ public class AnnouncementController {
     @GetMapping("/list")
     public R getAnnouncementList() {
         LOGGER.info("通知列表");
+        LOGGER.info("用户：{}", SecurityUtil.getUser().getUsername());
         // TODO 需要修改
         List<Announcement> announcements = announcementService.list();
         return R.ok(announcements.stream().map(announcement -> AnnouncementVo.transfer(announcement, null))

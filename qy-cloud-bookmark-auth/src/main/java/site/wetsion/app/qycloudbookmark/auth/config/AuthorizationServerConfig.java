@@ -18,6 +18,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import site.wetsion.app.qycloudbookmark.auth.service.AppClientDetailsService;
 import site.wetsion.app.qycloudbookmark.common.constant.AuthConstant;
+import site.wetsion.app.qycloudbookmark.common.security.service.AuthUser;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -53,8 +54,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.allowFormAuthenticationForClients()
+                // 设置为isAuthenticated()，即/oauth/check_token只有在被认证的请求（例如请求头携带token）才能访问
+                // 设置为permitAll() 则所有请求都可以访问
                 .checkTokenAccess("isAuthenticated()")
-                .tokenKeyAccess("permitAll()");
+                // 配置/token_key 接口的访问权限
+//                .tokenKeyAccess("permitAll()")
+        ;
     }
 
     @Override
@@ -83,7 +88,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 
     /**
-     * 在token被存储前进行增强
+     * 在token被存储前进行增强，增加额外信息：license、用户ID
      *
      * @author weixin
      * @date 3:24 PM 2020/3/24
@@ -93,7 +98,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public TokenEnhancer tokenEnhancer() {
         return (accessToken, authentication) -> {
             final Map<String, Object> additionalInfo = new HashMap<>(1);
-            additionalInfo.put("license", AuthConstant.LICENSE);
+            additionalInfo.put(AuthConstant.LABEL_LICENSE, AuthConstant.LICENSE);
+            AuthUser user = (AuthUser) authentication.getUserAuthentication().getPrincipal();
+            additionalInfo.put(AuthConstant.LABEL_USERID, user.getId());
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
             return accessToken;
         };

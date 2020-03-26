@@ -18,4 +18,8 @@ public interface ResponseConstant {
     String MSG_SUCCESS = "请求成功";
 
     String MSG_FAIL = "请求失败";
+
+    String CHARSET_UTF8 = "UTF-8";
+
+    String CONTENT_TYPE_JSON = "application/json; charset=utf-8";
 }

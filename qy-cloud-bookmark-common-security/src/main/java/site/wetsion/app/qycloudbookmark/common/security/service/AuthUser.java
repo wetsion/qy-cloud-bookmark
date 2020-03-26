@@ -1,4 +1,4 @@
-package site.wetsion.app.qycloudbookmark.auth.service;
+package site.wetsion.app.qycloudbookmark.common.security.service;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
