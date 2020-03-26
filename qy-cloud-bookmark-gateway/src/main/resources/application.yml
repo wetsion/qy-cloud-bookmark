@@ -18,12 +18,21 @@ spring:
           uri: lb://qy-cloud-bookmark-service-system
           predicates:
             - Path=/api/announcement/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallback
+                fallbackUri: 'forward:/fallback'
+
         - id: user_route
           uri: lb://qy-cloud-bookmark-service-user
           predicates:
             - Path=/api/user/**
-
-
+          filters:
+            - name: Hystrix
+              args:
+                name: fallback
+                fallbackUri: 'forward:/fallback'
 
     loadbalancer:
       retry:

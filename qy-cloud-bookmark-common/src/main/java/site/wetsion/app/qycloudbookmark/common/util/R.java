@@ -67,9 +67,9 @@ public class R<T> implements Serializable{
 
     public static <T> R<T> fail(String msg) {
         return new R<T>(null ,
-                ResponseConstant.CODE_SUCCESS,
+                ResponseConstant.CODE_SERVER_FAIL,
                 msg,
-                ResponseConstant.BOOLEAN_SUCCESS);
+                ResponseConstant.BOOLEAN_FAIL);
     }
 
     public static <T> R<T> fail(T data, String msg) {
