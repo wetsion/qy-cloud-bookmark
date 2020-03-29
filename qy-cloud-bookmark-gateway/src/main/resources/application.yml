@@ -14,6 +14,12 @@ spring:
           enabled: true
       ## 路由
       routes:
+        - id: auth_route
+          uri: lb://qy-cloud-bookmark-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/login, /oauth/token
         - id: system_route
           uri: lb://qy-cloud-bookmark-service-system
           predicates:
