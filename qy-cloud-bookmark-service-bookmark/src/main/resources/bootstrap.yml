@@ -1,0 +1,32 @@
+server:
+  port: 9040
+spring:
+  application:
+    name: qy-cloud-bookmark-service-bookmark
+  cloud:
+      nacos:
+        config:
+          server-addr: localhost:8848
+          file-extension: properties
+        discovery:
+          server-addr: localhost:8848
+  data:
+    elasticsearch:
+      cluster-nodes: localhost:9300
+security:
+  oauth2:
+    client:
+      client-id: service-user
+      client-secret: 123456
+      user-authorization-uri: http://localhost:9090/oauth/authorize
+      access-token-uri: http://localhost:9090/oauth/token
+      scope: all
+    resource:
+      id: service-system
+      # 由于使用了remoteTokenServce，所以token-info-uri必须配置，配置服务名即可负载均衡
+      token-info-uri: http://qy-cloud-bookmark-auth/oauth/check_token
+    authorization:
+      check-token-access: http://localhost:9090/oauth/check_token
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

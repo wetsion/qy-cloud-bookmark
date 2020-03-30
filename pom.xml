@@ -20,6 +20,8 @@
         <module>qy-cloud-bookmark-api-system</module>
         <module>qy-cloud-bookmark-api-admin</module>
         <module>qy-cloud-bookmark-service-system</module>
+        <module>qy-cloud-bookmark-service-bookmark</module>
+        <module>qy-cloud-bookmark-common-bigdata</module>
     </modules>
 
     <properties>

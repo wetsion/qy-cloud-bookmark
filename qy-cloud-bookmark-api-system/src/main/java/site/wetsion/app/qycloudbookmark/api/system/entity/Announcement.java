@@ -1,5 +1,6 @@
 package site.wetsion.app.qycloudbookmark.api.system.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @TableName("announcement")
 public class Announcement extends BaseDto {
 
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /** 标题 **/

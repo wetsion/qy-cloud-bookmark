@@ -41,7 +41,13 @@ public class AuthUserAuthenticationConverter implements UserAuthenticationConver
             Collection<? extends GrantedAuthority> authorities = getAuthorities(map);
 
             String username = (String) map.get(USERNAME);
-            Long userId = (Long) map.get(AuthConstant.LABEL_USERID);
+            Object uid = map.get(AuthConstant.LABEL_USERID);
+            Long userId;
+            if (uid instanceof Integer) {
+                userId = ((Integer) uid).longValue();
+            } else {
+                userId = (Long) uid;
+            }
             AuthUser user = new AuthUser(userId, username, NA_PWD, authorities);
             return new UsernamePasswordAuthenticationToken(user, NA_PWD, authorities);
         }

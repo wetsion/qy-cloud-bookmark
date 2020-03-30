@@ -29,7 +29,15 @@ spring:
               args:
                 name: fallback
                 fallbackUri: 'forward:/fallback'
-
+        - id: bookmark_route
+          uri: lb://qy-cloud-bookmark-service-bookmark
+          predicates:
+            - Path=/api/bookmark/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallback
+                fallbackUri: 'forward:/fallback'
         - id: user_route
           uri: lb://qy-cloud-bookmark-service-user
           predicates:

@@ -132,6 +132,38 @@ output {
 
 > 较大的模块，包含书签，以及和书签相关的分类、点赞，提供这些实体信息的接口。鉴于点赞、分类和用户行为相关，所以调用用户服务模块。
 
+
+#### 数据准备：
+
+elasticsearch创建索引 qy-cloud-bookmark：
+
+```sh
+curl -XPOST http://localhost:9200/qy-cloud-bookmark/bookmark/_mapping -H 'Content-Type:application/json' -d'
+{
+	"bookmark": {
+        "properties": {
+            "title": {
+                "type": "text",
+                "analyzer": "ik_max_word",
+                "search_analyzer": "ik_smart"
+            },
+            "content": {
+                "type": "text",
+                "analyzer": "ik_max_word",
+                "search_analyzer": "ik_smart"
+            },
+            "userId": {
+                "type": "long"
+            },
+            "id": {
+                "type": "long"
+            }
+        }
+    }
+}'
+```
+使用了ik进行分词
+
  - 广告商业服务模块
 
 > 提供页面展示的广告的接口
@@ -143,5 +175,6 @@ output {
  - 后台管理模块
 
 > 后台管理系统所需的接口
+
 
 

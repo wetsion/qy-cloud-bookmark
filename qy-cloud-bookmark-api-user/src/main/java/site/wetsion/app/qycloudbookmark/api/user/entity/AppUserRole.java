@@ -1,5 +1,6 @@
 package site.wetsion.app.qycloudbookmark.api.user.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -12,7 +13,7 @@ import site.wetsion.app.qycloudbookmark.common.dto.BaseDto;
 @TableName("app_user_role")
 public class AppUserRole extends BaseDto {
 
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     private Long userId;

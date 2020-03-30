@@ -1,5 +1,6 @@
 package site.wetsion.app.qycloudbookmark.api.bookmark.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @TableName("bookmark")
 public class Bookmark extends BaseDto {
 
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /** 所属用户ID */
